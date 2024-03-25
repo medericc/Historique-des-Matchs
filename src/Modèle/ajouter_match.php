@@ -3,14 +3,14 @@
 session_start();
 if (!isset($_SESSION['id_utilisateur'])) {
     // Rediriger l'utilisateur vers la page de connexion s'il n'est pas connecté
-    header("Location: connexion.php");
+    header("Location: ../Controleur/connexion.php");
     exit();
 }
 
 // Traiter les données du formulaire d'ajout si le formulaire est soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Inclure le fichier de configuration de la base de données
-    require_once "../login/login.php";
+    require_once ".Modèle/login.php";
 
     // Récupérer les données du formulaire
     $saison = $_POST['saison'];

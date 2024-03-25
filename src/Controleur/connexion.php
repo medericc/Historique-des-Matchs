@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 session_start();
 // Vérifie si l'utilisateur est déjà connecté, le redirige s'il est connecté
 if (isset($_SESSION['id_utilisateur'])) {
-    header("Location: club.php");
+    header("Location: ../Vue/clubs.php");
     exit();
 }
 
@@ -14,7 +14,7 @@ $connexion_reussie = false;
 
 // Vérifie si le formulaire de connexion a été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    require_once "../login/login.php"; // Fichier contenant les informations de connexion à la base de données
+    require_once "../Modèle/login.php"; // Fichier contenant les informations de connexion à la base de données
 
     // Récupère les valeurs du formulaire
     $nom_utilisateur = $_POST['nom_utilisateur'];
@@ -25,14 +25,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $statement = $pdo->prepare($query);
     $statement->bindParam(':nom_utilisateur', $nom_utilisateur, PDO::PARAM_STR);
     $statement->execute();
-    $user = $statement->fetch(PDO::FETCH_ASSOC); b
+    $user = $statement->fetch(PDO::FETCH_ASSOC); 
 
     // Vérifie si l'utilisateur existe dans la base de données et si le mot de passe correspond
     if ($user && password_verify($mot_de_passe, $user['mot_de_passe'])) {
         // L'authentification est réussie
         $_SESSION['id_utilisateur'] = $user['id']; // Stocke l'ID de l'utilisateur dans la session
         $connexion_reussie = true;
-        header("Location: all.php"); // Redirige vers la page de tableau de bord après connexion
+        header("Location: ../Vue/all.php"); // Redirige vers la page de tableau de bord après connexion
         exit();
     } else {
         $erreur = "Nom d'utilisateur ou mot de passe incorrect";

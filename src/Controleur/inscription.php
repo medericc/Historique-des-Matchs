@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $erreur = "Veuillez remplir tous les champs.";
     } else {
         // Connexion à la base de données
-        require_once "../login/login.php"; // Assurez-vous d'avoir le bon chemin
+        require_once "../Modèle/login.php"; // Assurez-vous d'avoir le bon chemin
 
         // Vérifier si le nom d'utilisateur existe déjà
         $query_check = "SELECT id FROM users WHERE nom_utilisateur = :nom_utilisateur";

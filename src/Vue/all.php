@@ -5,14 +5,14 @@
  // Vérifier si l'utilisateur est connecté
 if (isset($_SESSION['id_utilisateur'])) {
     // Si l'utilisateur est connecté, définir le lien de déconnexion
-    $logout_link = '<a href="../login/logout.php" class="btn btn-primary">Déconnexion</a>';
+    $logout_link = '<a href="Modèle/logout.php" class="btn btn-primary">Déconnexion</a>';
 } else {
     // Si l'utilisateur n'est pas connecté, définir le lien de connexion
-    $logout_link = '<a href="../login/connexion.php" class="btn btn-primary">Connexion</a>';
+    $logout_link = '<a href="Controleur/connexion.php" class="btn btn-primary">Connexion</a>';
 }
 
 // Inclure le script login.php
-include '../login/login.php';
+include '../Modèle/login.php';
 ?>
 
 
@@ -38,7 +38,7 @@ include '../login/login.php';
        
         if (isset($_SESSION['id_utilisateur'])) {
             // Affiche le bouton d'ajout de match si l'utilisateur est connecté
-            echo '<a href="ajouter_match.php" class="btn btn-primary">Ajouter un match</a>';
+            echo '<a href="../Modele/ajouter_match.php" class="btn btn-primary">Ajouter un match</a>';
         }
         ?>
             <div class="table-container">
@@ -193,7 +193,7 @@ foreach ($donnees as $row) {
     </main>
     <div id="footer"></div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="js/add2.js"></script>
+    <script src="../js/add2.js"></script>
     <script src="../js/tri.js"></script>
 </body>
 </html>
